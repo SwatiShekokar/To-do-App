@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoAPP</title>
+</head>
+<style>
+    * {
+        background-color: whitesmoke;
+        color: rgb(30, 22, 20);
+    }
+    
+    div {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    
+    #list {
+        padding-right: 100px;
+    }
+    
+    li {
+        font-size: xx-large;
+    }
+    
+    #Add {
+        margin-left: 20px;
+        background-color: rgb(75, 93, 133);
+    }
+    
+    input {
+        width: 60%;
+        height: 50px;
+    }
+    
+    .delete {
+        background-color: rgb(87, 118, 227);
+        margin-left: 20px;
+        align-self: center;
+    }
+</style>
+
+<body>
+    <div id="h">
+        <h1>To Do APP</h1>
+    </div>
+    <div>
+        <input placeholder="enter your task">
+        <div>
+            <button id="Add">Add Task</button>
+        </div>
+    </div>
+    <div id="list">
+        <ul>
+            <li>Eat
+                <button class="delete">delete</button>
+            </li>
+            <li>code
+                <button class="delete">delete</button>
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        let btn = document.querySelector("button");
+        let ul = document.querySelector("ul");
+        let inp = document.querySelector("input");
+
+        btn.addEventListener("click", function() {
+            let item = document.createElement("li");
+            item.innerText = inp.value;
+
+
+            let delBtn = document.createElement("button");
+            delBtn.innerText = "delete";
+            delBtn.classList.add("delete");
+            item.appendChild(delBtn);
+            ul.appendChild(item);
+            inp.value = ""
+        });
+
+        ul.addEventListener("click", function(event) {
+            if (event.target.nodeName == "BUTTON") {
+                let listItem = event.target.parentElement;
+                listItem.remove();
+
+
+            }
+        });
+    </script>
+</body>
+
+</html>
